@@ -257,7 +257,7 @@ def create_venue_submission():
     try:
         form = request.form
         venue = Venue(name=form['name'], city=form['city'], state=form['state'], address=form['address'],
-                      phone=form['phone'], genres=form['genres'], facebook_link=form['facebook_link'])
+                      phone=form['phone'], genres=request.form.getlist('genres'), facebook_link=form['facebook_link'])
         db.session.add(venue)
         db.session.commit()
         # on successful db insert, flash success
